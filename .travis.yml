@@ -1,7 +1,11 @@
 sudo: required
+language: generic
 
 services:
   - docker
 
 before_install:
-  - docker build -t ldsimonassi/docker-dashreact-dev -f Dockerfile.dev .
+  - docker build -t ldsimonassi/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true ldsimonassi/docker-react npm run test
